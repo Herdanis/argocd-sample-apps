@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-service-01
+spec:
+  selector:
+    matchLabels:
+      app: simple-service-01
+  template:
+    metadata:
+      labels:
+        app: simple-service-01
+    spec:
+      containers:
+        - name: simple-service
+          image: herdanis/simple-service:1.0
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8089
